@@ -1,5 +1,6 @@
 'use client';
 import { FaExclamationTriangle } from 'react-icons/fa';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface ConfirmationModalProps {
   confirmText?: string;
   cancelText?: string;
   type?: 'warning' | 'success';
+  children?: ReactNode;
 }
 
 export default function ConfirmationModal({
@@ -20,8 +22,16 @@ export default function ConfirmationModal({
   message,
   confirmText = 'Confirmer',
   cancelText = 'Annuler',
-  type = 'warning'
+  type = 'warning',
+  children
 }: ConfirmationModalProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   if (!isOpen) return null;
 
   return (
@@ -44,6 +54,7 @@ export default function ConfirmationModal({
                 </div>
               </div>
             </div>
+            {children && <div className="mt-4">{children}</div>}
           </div>
           <div className="bg-gray-50 px-6 py-4 flex justify-end gap-3">
             <button
