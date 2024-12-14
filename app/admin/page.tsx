@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaBox, FaChartBar, FaFileAlt, FaPlus, FaSearch, FaUsers } from 'react-icons/fa';
+import { FaBox, FaChartBar, FaFileAlt, FaPlus, FaSearch, FaUsers, FaShoppingBag } from 'react-icons/fa';
 
 interface Livreur {
   id: number;
@@ -70,6 +70,12 @@ export default function AdminDashboard() {
                 <Link href="/admin" className="flex items-center gap-3 p-3 text-[#048B9A] bg-blue-50 rounded-lg">
                   <FaUsers />
                   <span>Livreurs</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/commandes" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                  <FaShoppingBag />
+                  <span>Commandes</span>
                 </Link>
               </li>
               <li>
