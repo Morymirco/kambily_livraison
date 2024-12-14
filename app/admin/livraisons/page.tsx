@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaUsers, FaBox, FaChartBar, FaSearch, FaFilter, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaBox, FaChartBar, FaClock, FaFilter, FaMapMarkerAlt, FaSearch, FaUsers } from 'react-icons/fa';
+import Sidebar from '../../components/admin/Sidebar';
 
 interface Livraison {
   id: number;
@@ -58,33 +59,9 @@ export default function AdminLivraisons() {
         </div>
       </header>
 
-      {/* Menu latéral */}
       <div className="flex">
-        <aside className="w-64 bg-white h-[calc(100vh-72px)] shadow-lg">
-          <nav className="p-4">
-            <ul className="space-y-2">
-              <li>
-                <Link href="/admin" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaUsers />
-                  <span>Livreurs</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/livraisons" className="flex items-center gap-3 p-3 text-[#048B9A] bg-blue-50 rounded-lg">
-                  <FaBox />
-                  <span>Livraisons</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/statistiques" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaChartBar />
-                  <span>Statistiques</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-
+        <Sidebar />
+        
         {/* Contenu principal */}
         <main className="flex-1 p-6">
           <div className="flex justify-between items-center mb-6">
@@ -151,21 +128,21 @@ export default function AdminLivraisons() {
               <tbody className="divide-y divide-gray-200">
                 {livraisons.map((livraison) => (
                   <tr key={livraison.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4">{livraison.client}</td>
-                    <td className="px-6 py-4">{livraison.livreur}</td>
+                    <td className="px-6 py-4 text-gray-900">{livraison.client}</td>
+                    <td className="px-6 py-4 text-gray-900">{livraison.livreur}</td>
                     <td className="px-6 py-4">
                       <div className="flex items-center">
-                        <FaMapMarkerAlt className="text-gray-400 mr-2" />
-                        <span>{livraison.adresse}</span>
+                        <FaMapMarkerAlt className="text-[#048B9A] mr-2" />
+                        <span className="text-gray-900">{livraison.adresse}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center">
-                        <FaClock className="text-gray-400 mr-2" />
-                        <span>{livraison.heure}</span>
+                        <FaClock className="text-[#048B9A] mr-2" />
+                        <span className="text-gray-900">{livraison.heure}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-medium">{livraison.montant}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">{livraison.montant}</td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 rounded-full text-xs ${
                         livraison.statut === "En cours" ? "bg-yellow-100 text-yellow-800" :

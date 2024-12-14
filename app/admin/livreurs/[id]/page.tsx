@@ -1,11 +1,10 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { use } from 'react';
-import { FaArrowLeft, FaStar, FaUser, FaPhone, FaEnvelope, FaTruck, FaMapMarkerAlt, FaCalendar } from 'react-icons/fa';
 import ConfirmationModal from '@/app/components/ConfirmationModal';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { FaArrowLeft, FaCalendar, FaEnvelope, FaMapMarkerAlt, FaPhone, FaStar, FaTruck, FaUser } from 'react-icons/fa';
 
 interface Livraison {
   id: number;
@@ -16,11 +15,10 @@ interface Livraison {
   evaluation: number;
 }
 
-export default function DetailLivreur({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
+export default function DetailLivreur({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [livreur] = useState({
-    id: resolvedParams.id,
+    id: params.id,
     nom: "Mory Koulibaly",
     email: "mory@example.com",
     telephone: "625 21 21 15",
@@ -125,23 +123,23 @@ export default function DetailLivreur({ params }: { params: Promise<{ id: string
           {/* Statistiques rapides */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 bg-gray-50">
             <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-              <p className="text-gray-500 text-sm">Total livraisons</p>
+              <p className="text-gray-900 text-sm">Total livraisons</p>
               <p className="text-2xl font-bold text-[#048B9A]">{livreur.statistiques.livraisons}</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-              <p className="text-gray-500 text-sm">En cours</p>
+              <p className="text-gray-900 text-sm">En cours</p>
               <p className="text-2xl font-bold text-[#048B9A]">{livreur.statistiques.enCours}</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-              <p className="text-gray-500 text-sm">Complétées</p>
+              <p className="text-gray-900 text-sm">Complétées</p>
               <p className="text-2xl font-bold text-[#048B9A]">{livreur.statistiques.completees}</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-              <p className="text-gray-500 text-sm">Taux de réussite</p>
+              <p className="text-gray-900 text-sm">Taux de réussite</p>
               <p className="text-2xl font-bold text-[#048B9A]">{livreur.statistiques.tauxReussite}</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-              <p className="text-gray-500 text-sm">Temps moyen</p>
+              <p className="text-gray-900 text-sm">Temps moyen</p>
               <p className="text-2xl font-bold text-[#048B9A]">{livreur.statistiques.tempsMoyen}</p>
             </div>
           </div>
@@ -157,23 +155,23 @@ export default function DetailLivreur({ params }: { params: Promise<{ id: string
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-[#048B9A]" />
-                <span>{livreur.email}</span>
+                <span className="text-gray-900">{livreur.email}</span>
               </div>
               <div className="flex items-center gap-3">
                 <FaPhone className="text-[#048B9A]" />
-                <span>{livreur.telephone}</span>
+                <span className="text-gray-900">{livreur.telephone}</span>
               </div>
               <div className="flex items-center gap-3">
                 <FaTruck className="text-[#048B9A]" />
-                <span>{livreur.vehicule}</span>
+                <span className="text-gray-900">{livreur.vehicule}</span>
               </div>
               <div className="flex items-center gap-3">
                 <FaMapMarkerAlt className="text-[#048B9A]" />
-                <span>{livreur.zone}</span>
+                <span className="text-gray-900">{livreur.zone}</span>
               </div>
               <div className="flex items-center gap-3">
                 <FaCalendar className="text-[#048B9A]" />
-                <span>Inscrit le {livreur.dateInscription}</span>
+                <span className="text-gray-900">Inscrit le {livreur.dateInscription}</span>
               </div>
             </div>
           </div>
@@ -187,7 +185,7 @@ export default function DetailLivreur({ params }: { params: Promise<{ id: string
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h3 className="font-medium">{livraison.client}</h3>
-                      <p className="text-sm text-gray-600">{livraison.adresse}</p>
+                      <p className="text-sm text-gray-900">{livraison.adresse}</p>
                     </div>
                     <span className={`px-2 py-1 rounded-full text-xs ${
                       livraison.statut === "Livré" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
@@ -195,7 +193,7 @@ export default function DetailLivreur({ params }: { params: Promise<{ id: string
                       {livraison.statut}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center text-sm text-gray-500">
+                  <div className="flex justify-between items-center text-sm text-gray-900">
                     <span>{livraison.date}</span>
                     {livraison.evaluation > 0 && (
                       <div className="flex items-center gap-1">

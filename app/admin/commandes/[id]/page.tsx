@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { use } from 'react';
 import { FaArrowLeft, FaUser, FaPhone, FaEnvelope, FaTruck, FaMapMarkerAlt, FaClock, FaBox, FaHistory } from 'react-icons/fa';
 import ConfirmationModal from '@/app/components/ConfirmationModal';
 
@@ -14,14 +13,13 @@ interface Historique {
   details?: string;
 }
 
-export default function DetailCommande({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
+export default function DetailCommande({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [showReassignModal, setShowReassignModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
 
   const [commande] = useState({
-    id: resolvedParams.id,
+    id: params.id,
     numero: "CMD-2024-001",
     client: {
       nom: "Mamadou Diallo",

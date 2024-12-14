@@ -1,9 +1,10 @@
 'use client';
-import { useState } from 'react';
+import ConfirmationModal from '@/app/components/ConfirmationModal';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaUsers, FaBox, FaChartBar, FaSearch, FaFilter, FaShoppingBag, FaFileAlt, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
-import ConfirmationModal from '@/app/components/ConfirmationModal';
+import { useState } from 'react';
+import { FaBox, FaChartBar, FaClock, FaFileAlt, FaFilter, FaMapMarkerAlt, FaSearch, FaShoppingBag, FaUsers } from 'react-icons/fa';
+import Sidebar from '../../components/admin/Sidebar';
 
 interface Commande {
   id: number;
@@ -96,45 +97,9 @@ export default function AdminCommandes() {
         </div>
       </header>
 
-      {/* Menu latéral */}
       <div className="flex">
-        <aside className="w-64 bg-white h-[calc(100vh-72px)] shadow-lg">
-          <nav className="p-4">
-            <ul className="space-y-2">
-              <li>
-                <Link href="/admin" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaUsers />
-                  <span>Livreurs</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/commandes" className="flex items-center gap-3 p-3 text-[#048B9A] bg-blue-50 rounded-lg">
-                  <FaShoppingBag />
-                  <span>Commandes</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/livraisons" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaBox />
-                  <span>Livraisons</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/statistiques" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaChartBar />
-                  <span>Statistiques</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/rapports" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaFileAlt />
-                  <span>Rapports</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-
+        <Sidebar />
+        
         {/* Contenu principal */}
         <main className="flex-1 p-6">
           <div className="flex justify-between items-center mb-6">

@@ -16,6 +16,7 @@ import {
   ArcElement,
 } from 'chart.js';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import Sidebar from '../../components/admin/Sidebar';
 
 ChartJS.register(
   CategoryScale,
@@ -44,7 +45,7 @@ interface ZoneRetard {
   raisonPrincipale: string;
 }
 
-export default function Rapports() {
+export default function AdminRapports() {
   const [periode, setPeriode] = useState('month');
   const [topLivreurs] = useState<TopLivreur[]>([
     { id: 1, nom: "Mory Koulibaly", livraisons: 156, evaluation: 4.8, tauxReussite: "98%" },
@@ -127,33 +128,9 @@ export default function Rapports() {
         </div>
       </header>
 
-      {/* Menu latéral */}
       <div className="flex">
-        <aside className="w-64 bg-white h-[calc(100vh-72px)] shadow-lg">
-          <nav className="p-4">
-            <ul className="space-y-2">
-              <li>
-                <Link href="/admin" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaUsers />
-                  <span>Livreurs</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/livraisons" className="flex items-center gap-3 p-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                  <FaBox />
-                  <span>Livraisons</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin/rapports" className="flex items-center gap-3 p-3 text-[#048B9A] bg-blue-50 rounded-lg">
-                  <FaChartBar />
-                  <span>Rapports</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-
+        <Sidebar />
+        
         {/* Contenu principal */}
         <main className="flex-1 p-6">
           {/* Filtres */}
@@ -199,7 +176,7 @@ export default function Rapports() {
 
           {/* Top livreurs */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">Top Livreurs</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Top Livreurs</h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
@@ -213,11 +190,11 @@ export default function Rapports() {
                 <tbody className="divide-y divide-gray-200">
                   {topLivreurs.map((livreur) => (
                     <tr key={livreur.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4">{livreur.nom}</td>
-                      <td className="px-6 py-4">{livreur.livraisons}</td>
+                      <td className="px-6 py-4 text-gray-900">{livreur.nom}</td>
+                      <td className="px-6 py-4 text-gray-900">{livreur.livraisons}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center">
-                          <span className="mr-2">{livreur.evaluation}</span>
+                          <span className="text-gray-900 mr-2">{livreur.evaluation}</span>
                           <div className="flex">
                             {[...Array(5)].map((_, index) => (
                               <FaChartBar
@@ -232,7 +209,7 @@ export default function Rapports() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4">{livreur.tauxReussite}</td>
+                      <td className="px-6 py-4 text-gray-900">{livreur.tauxReussite}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -254,7 +231,7 @@ export default function Rapports() {
 
           {/* Zones à problèmes */}
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <FaMapMarkerAlt />
               Zones avec retards fréquents
             </h3>
@@ -262,19 +239,19 @@ export default function Rapports() {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Zone</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre de retards</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Temps moyen</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Raison principale</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase">Zone</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase">Nombre de retards</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase">Temps moyen</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase">Raison principale</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {zonesRetard.map((zone, index) => (
                     <tr key={index} className="hover:bg-gray-50">
-                      <td className="px-6 py-4">{zone.zone}</td>
-                      <td className="px-6 py-4">{zone.retards}</td>
-                      <td className="px-6 py-4">{zone.tempsMoyen}</td>
-                      <td className="px-6 py-4">{zone.raisonPrincipale}</td>
+                      <td className="px-6 py-4 text-gray-900">{zone.zone}</td>
+                      <td className="px-6 py-4 text-gray-900">{zone.retards}</td>
+                      <td className="px-6 py-4 text-gray-900">{zone.tempsMoyen}</td>
+                      <td className="px-6 py-4 text-gray-900">{zone.raisonPrincipale}</td>
                     </tr>
                   ))}
                 </tbody>
