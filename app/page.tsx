@@ -1,9 +1,11 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import DashboardCharts from './components/DashboardCharts';
 import { FaHeadset } from 'react-icons/fa';
 import NewDeliveries from './components/NewDeliveries';
 import { useState } from 'react';
+import DailyDeliveries from './components/DailyDeliveries';
 
 interface Livraison {
   id: number;
@@ -47,8 +49,8 @@ export default function DashboardLivreur() {
             </Link>
             <div className="relative group">
               <div className="flex items-center gap-2 cursor-pointer">
-                <span className="font-['Roboto']">Mory Koulibaly</span>
-                <div className="w-10 h-10 bg-white rounded-full overflow-hidden">
+                <span className="font-['Roboto'] text-white">Mory Koulibaly</span>
+                <div className="w-10 h-10 bg-white rounded-full overflow-hidden border-2 border-white">
                   <Image
                     src="/profil.jpg"
                     alt="Profile"
@@ -60,65 +62,72 @@ export default function DashboardLivreur() {
               </div>
               
               {/* Menu déroulant */}
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 invisible group-hover:visible transition-all opacity-0 group-hover:opacity-100">
-                <Link href="/profil">
-                  <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center gap-2">
-                    <svg
-                      className="w-5 h-5 text-[#048B9A]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                    Mon profil
-                  </div>
-                </Link>
+              <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-3 invisible group-hover:visible transition-all opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2">
+                <div className="px-4 py-2 border-b border-gray-100">
+                  <p className="text-sm font-medium text-gray-900">Connecté en tant que</p>
+                  <p className="text-sm text-gray-500 truncate">mory@gmail.com</p>
+                </div>
+
+                <div className="py-2">
+                  <Link href="/profil">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center gap-3 text-gray-700 hover:text-[#048B9A] transition-colors">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      Mon profil
+                    </div>
+                  </Link>
+                  
+                  <Link href="/support">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center gap-3 text-gray-700 hover:text-[#048B9A] transition-colors">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                      </svg>
+                      Support
+                    </div>
+                  </Link>
+                </div>
                 
-                <Link href="/support">
-                  <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center gap-2">
-                    <svg
-                      className="w-5 h-5 text-[#048B9A]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-                      />
-                    </svg>
-                    Support
-                  </div>
-                </Link>
-                
-                <div className="border-t border-gray-100 my-2"></div>
-                
-                <Link href="/login">
-                  <div className="px-4 py-2 hover:bg-red-50 cursor-pointer flex items-center gap-2 text-red-600">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                      />
-                    </svg>
-                    Se déconnecter
-                  </div>
-                </Link>
+                <div className="border-t border-gray-100 mt-2 pt-2">
+                  <Link href="/login">
+                    <div className="px-4 py-2 hover:bg-red-50 cursor-pointer flex items-center gap-3 text-red-600 hover:text-red-700 transition-colors">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      Se déconnecter
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -379,6 +388,10 @@ export default function DashboardLivreur() {
 
       {/* Ajoutez les graphiques après la liste des livraisons */}
       <DashboardCharts />
+
+      <div className="container mx-auto">
+        <DailyDeliveries />
+      </div>
     </div>
   );
 }
