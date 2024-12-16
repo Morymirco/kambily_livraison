@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: "Kambily-Livraison",
   description: "Application de livraison pour les livreurs Kambily",
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/logo.webp',
+    shortcut: '/logo.webp',
+    apple: '/logo.webp',
   },
 };
 

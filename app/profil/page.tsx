@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { FaArrowLeft, FaEdit, FaEnvelope, FaMapMarkerAlt, FaPhone, FaStar, FaTruck, FaGlobe, FaToggleOn, FaToggleOff } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { FaArrowLeft, FaEdit, FaEnvelope, FaGlobe, FaMapMarkerAlt, FaPhone, FaStar, FaToggleOff, FaToggleOn, FaTruck } from 'react-icons/fa';
 
 export default function ProfilLivreur() {
   const [isAvailable, setIsAvailable] = useState(true);

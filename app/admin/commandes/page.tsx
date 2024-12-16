@@ -105,11 +105,11 @@ export default function AdminCommandes() {
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-800">Gestion des Commandes</h2>
             <div className="flex gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+              <button className="flex items-center gap-2 px-4 py-2 border text-slate-950 border-gray-300 rounded-lg hover:bg-gray-50">
                 <FaFilter />
                 Filtrer
               </button>
-              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#048B9A]">
+              <select className="px-4 py-2 border border-gray-300 text-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#048B9A]">
                 <option value="today">Aujourd'hui</option>
                 <option value="week">Cette semaine</option>
                 <option value="month">Ce mois</option>
@@ -190,7 +190,7 @@ export default function AdminCommandes() {
                         <span className="text-sm text-gray-900">{commande.heure}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-medium">{commande.montant}</td>
+                    <td className="px-6 py-4 font-medium text-slate-950">{commande.montant}</td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 rounded-full text-xs ${
                         commande.statut === "En attente" ? "bg-yellow-100 text-yellow-800" :

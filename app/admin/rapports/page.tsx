@@ -141,7 +141,7 @@ export default function AdminRapports() {
               <select
                 value={periode}
                 onChange={(e) => setPeriode(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#048B9A]"
+                className="px-4 py-2 border border-gray-300 text-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#048B9A]"
               >
                 <option value="week">Cette semaine</option>
                 <option value="month">Ce mois</option>
